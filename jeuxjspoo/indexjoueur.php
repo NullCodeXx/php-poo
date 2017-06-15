@@ -9,20 +9,19 @@
 <body>
     <h1>TP POO GAME</h1>
     <?php
+    //On recupere la page et la class.
+        include "./classjoueur.php";
+    
     //Session de sauvegarde joueur, fin du script.
         session_start();
         //Vérifie si j'ai mes perso dans ma session.
-        if isset($_SESSION["statsLife"] && $_SESSION["statsForce"]) {
-            $perso1 = $_SESSION["statsLife"];
-            $perso2 = $_SESSION["statsForce"];
+        if (isset($_SESSION["statsLife"]) && isset($_SESSION["statsForce"])) {
+            $instPlayer1= $_SESSION["statsLife"];
+            $instPlayer2= $_SESSION["statsForce"];
         }else {
-            $perso1 = new Joueurs("Riyu",10,20,100);
-            $perso2 = new Joueurs("ken",20,10,100);
+            $instPlayer1= new Joueurs("Riyu",10,20,100);
+            $instPlayer2= new Joueurs("ken",20,10,100);
         }
-        //On recupere la page et la class.
-        include "./classjoueur.php";
-        $instPlayer1 = new Joueurs("Riyu",10,20,100);
-        $instPlayer2 = new Joueurs("ken",20,10,100);
         
         //ON les fais attaquer.
         $instPlayer1->attack($instPlayer2);
@@ -40,14 +39,11 @@
         
 
         //Session de sauvegarde joueur, fin du script.
-        session_start();
         $_SESSION["statsLife"] = $instPlayer1;
         $_SESSION["statsForce"] = $instPlayer2;
-        
-        //Session de recuperation des stats.
-        $_SESSION["statsLife"];
-        $_SESSION["statsForce"];
-        
+        echo '<pre>';
+        var_dump($_SESSION);
+        echo '</pre>';
     ?>
 </body>
 </html>
