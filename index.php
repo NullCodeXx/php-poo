@@ -14,7 +14,7 @@ and open the template in the editor.
             /*inclure la class et le chemin de la page PetitChien.php*/
             include_once './PetitChien.php';
             //L'instance minuscule, class majuscule.
-            $petitChien = new PetitChien();
+            $petitChien = new PetitChien("frite", "dog", "blue", "1/2/2013");
             /*Change ajoute la valeur au clef*/
             $petitChien ->nom = "frite";
             $petitChien ->couleur= "blue";
@@ -23,7 +23,7 @@ and open the template in the editor.
             
             /*appel la function sur la class */
             $petitChien ->aboyer();
-            
+            //Appel le construtor de la class.
             echo $petitChien;
         ?>
     </body>
